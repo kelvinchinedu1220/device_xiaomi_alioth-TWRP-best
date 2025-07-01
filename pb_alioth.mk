@@ -11,12 +11,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from alioth device
 $(call inherit-product, device/xiaomi/alioth/device.mk)
 
-# Inherit some common TWRP stuff.
+# Inherit some common PBRP stuff.
 $(call inherit-product, vendor/pb/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := alioth
-PRODUCT_NAME := twrp_alioth
+PRODUCT_NAME := pb_alioth
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi K40
 PRODUCT_MANUFACTURER := Xiaomi
