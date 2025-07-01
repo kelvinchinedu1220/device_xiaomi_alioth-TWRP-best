@@ -179,5 +179,49 @@ TW_HAS_EDL_MODE := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS :=true
 TW_LOAD_VENDOR_MODULES := "exfat.ko"
 TW_BACKUP_EXCLUSIONS := /data/fonts,/data/adb/ap,/data/adb/ksu
-TW_FRAMERATE := 60
+TW_FRAMERATE := 90
 
+# Skyhawk Specific Flags
+SHRP_DEVICE_CODE := alioth
+SHRP_PATH := device/xiaomi/alioth
+SHRP_MAINTAINER := nino
+SHRP_REC_TYPE := SAR
+SHRP_DEVICE_TYPE := A/B
+SHRP_REC := /dev/block/bootdevice/by-name/boot
+SHRP_EDL_MODE := 1
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 1
+SHRP_AB := true
+SHRP_STATUSBAR_RIGHT_PADDING := 48
+SHRP_STATUSBAR_LEFT_PADDING := 48
+SHRP_NOTCH := true
+SHRP_EXPRESS := true
+SHRP_EXPRESS_USE_DATA := true
+SHRP_DARK := true
+SHRP_FLASH_MAX_BRIGHTNESS := 300
+SHRP_NO_SAR_AUTOMOUNT := true
+SHRP_LITE := false
+SHRP_OFFICIAL := true
+SHRP_EDL_MODE := 1
+SHRP_CUSTOM_FLASHLIGHT := true
+SHRP_FONP_1 := sys/devices/platform/flashlights_ocp8132/torch_brightness
+SHRP_FONP_2 := sys/devices/platform/flashlights_ocp8132/torch_brightness
+
+# enable python
+TW_INCLUDE_PYTHON := true
+
+# Modules
+TARGET_RECOVERY_DEVICE_MODULES += libion vendor.display.config@1.0 vendor.display.config@2.0 libdisplayconfig.qti
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.vibrator.service
+
+#Display
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
+    $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
