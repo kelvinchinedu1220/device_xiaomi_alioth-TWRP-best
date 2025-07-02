@@ -14,23 +14,19 @@
 # limitations under the License.
 #
 
-# Configure base.mk
+# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Configure core_64_bit_only.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Project ID Quota
- $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Configure gsi_keys.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
-# Configure Virtual A/B
+# Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Configure twrp
-$(call inherit-product, vendor/twrp/config/common.mk)
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+LOCAL_PATH := device/xiaomi/alioth
 
 PRODUCT_PACKAGES += \
     bootctrl.xiaomi_sm8250.recovery \
@@ -74,3 +70,7 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@1.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
+
+# VINTF
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
