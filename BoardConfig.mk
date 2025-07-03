@@ -194,5 +194,11 @@ PB_DISABLE_DEFAULT_DM_VERITY := true
 PB_DISABLE_DEFAULT_TREBLE_COMP := true
 PB_TORCH_PATH := "/sys/class/leds/flashlight"
 
+
+TW_STATUS_ICONS_ALIGN := center
+TW_CUSTOM_CPU_POS := "50"
+TW_CUSTOM_CLOCK_POS := "340" 
+TW_CUSTOM_BATTERY_POS := "800"
+
 # enable python
 TW_INCLUDE_PYTHON := true
