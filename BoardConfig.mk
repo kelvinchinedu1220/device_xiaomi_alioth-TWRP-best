@@ -49,6 +49,9 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 QCOM_BOARD_PLATFORMS += xiaomi_sm8250
 
 # Kernel
+FORCE_PREBUILT_KERNEL := true
+TARGET_NO_KERNEL := false
+TARGET_USES_PREBUILT_KERNEL := true
 VENDOR_CMDLINE := "console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildvariant=user androidboot.init_fatal_reboot_target=recovery androidboot.selinux=permissive"
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE          := 0x00000000
@@ -57,19 +60,23 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
+
+# Prebuilt kernel
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/alioth/kernel
+# TARGET_KERNEL_SOURCE := kernel/xiaomi/alioth
+# TARGET_KERNEL_CONFIG := alioth_defconfig
 
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(VENDOR_CMDLINE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 
 
-# Kenel dtb
+# Prebuilt dtb
 # BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/alioth/dtb
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
-# Kenel dtbo
+# Prebuilt dtbo
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/alioth/dtbo.img
 
 #A/B
